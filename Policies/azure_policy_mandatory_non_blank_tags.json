@@ -1,0 +1,89 @@
+{
+    "mode": "All",
+    "policyRule": {
+        "if": {
+            "anyOf": [
+                {
+                    "field": "[concat('tags[', parameters('tag_env'), ']')]",
+                    "exists": "false"
+                },
+                {
+                    "field": "[concat('tags[', parameters('tag_env'), ']')]",
+                    "equals": ""
+                },
+                {
+                    "field": "[concat('tags[', parameters('tag_project'), ']')]",
+                    "exists": "false"
+                },
+                {
+                    "field": "[concat('tags[', parameters('tag_project'), ']')]",
+                    "equals": ""
+                },
+                {
+                    "field": "[concat('tags[', parameters('tag_costcenter'), ']')]",
+                    "exists": "false"
+                },
+                {
+                    "field": "[concat('tags[', parameters('tag_costcenter'), ']')]",
+                    "equals": ""
+                },
+                {
+                    "field": "[concat('tags[', parameters('tag_businessarea'), ']')]",
+                    "exists": "false"
+                },
+                {
+                    "field": "[concat('tags[', parameters('tag_businessarea'), ']')]",
+                    "equals": ""
+                },
+                {
+                    "field": "[concat('tags[', parameters('tag_workloadtype'), ']')]",
+                    "exists": "false"
+                },
+                {
+                    "field": "[concat('tags[', parameters('tag_workloadtype'), ']')]",
+                    "equals": ""
+                }
+            ]
+        },
+        "then": {
+            "effect": "deny"
+        }
+    },
+    "parameters": {
+        "tag_env": {
+            "type": "String",
+            "metadata": {
+                "displayName": "Env",
+                "description": "example: development"
+            }
+        },
+        "tag_project": {
+            "type": "String",
+            "metadata": {
+                "displayName": "Project",
+                "description": "example: crm/cdp,voc,hris"
+            }
+        },
+        "tag_costcenter": {
+            "type": "String",
+            "metadata": {
+                "displayName": "CostCenter",
+                "description": "example: to,customerservice,contactcenter,finance"
+            }
+        },
+        "tag_businessarea": {
+            "type": "String",
+            "metadata": {
+                "displayName": "BusinessArea",
+                "description": "example: complaints,service,products,marketing"
+            }
+        },
+        "tag_workloadtype": {
+            "type": "String",
+            "metadata": {
+                "displayName": "WorkloadType",
+                "description": "example: database,vm,vnet,api,containers"
+            }
+        }
+    }
+}
